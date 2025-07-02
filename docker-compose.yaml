@@ -6,7 +6,7 @@ networks:
 
 volumes:
   mongo-data:
-  
+
 services:
   mongo:
     image: mongo:latest
@@ -14,11 +14,12 @@ services:
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_PASSWORD: root123
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
     networks:
       - ms-network
 
@@ -32,6 +33,21 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo
     ports:
       - "8081:8081"
+    depends_on:
+      - mongo
+    networks:
+      - ms-network
+  
+  user-add-service:
+    build:
+      context: ./user-add
+      dockerfile: Dockerfile
+      args:
+        - ENV=local
+    container_name: user-add-service
+    restart: always
+    ports:
+      - "3000:3000"
     depends_on:
       - mongo
     networks:
