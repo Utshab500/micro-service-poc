@@ -34,7 +34,8 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - mongo
+      mongo:
+        condition: service_started
     networks:
       - ms-network
   
@@ -45,11 +46,28 @@ services:
       args:
         - ENV=local
     environment:
-      - PORT=3001
+      - TARGET_PORT=3001
     container_name: user-add-service
     restart: always
     ports:
       - "3001:3000"
+    depends_on:
+      - mongo
+    networks:
+      - ms-network
+
+  user-list-service:
+    build:
+      context: ./user-list
+      dockerfile: Dockerfile
+      args:
+        - ENV=local
+    environment:
+      - TARGET_PORT=3002
+    container_name: user-list-service
+    restart: always
+    ports:
+      - "3002:3000"
     depends_on:
       - mongo
     networks:
