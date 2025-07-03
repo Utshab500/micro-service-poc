@@ -9,7 +9,7 @@ import Connection from "./connection.js";
 export class User {
     name = "";
     email = "";
-    asignedTasks = [];
+    asignedTaskIds = [];
 };
 
 /**
