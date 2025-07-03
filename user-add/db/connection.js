@@ -1,4 +1,3 @@
-// const { MongoClient } = require("mongodb");
 import pkg from "mongodb";
 const { MongoClient } = pkg;
 
@@ -36,29 +35,16 @@ export default class Connection {
       console.log(connect_check);
       let status = false;
       if (!connect_check.ok) {
-        throw new Error("Failed to connect to the database");
+        throw new Error("❌ Failed to connect to the database");
       }
       else {
         status = true;
-        console.log("Connected successfully to server");
+        console.log("✅ Connected successfully to server");
       }
       return {
         status: status,
         client: this._client
       };
-    //   return this._client.connect().then(resp => {
-
-    //     // Establish and verify connection
-    //     this._client.db(this.DB_NAME).command({ ping: 1 });
-
-    //     console.log("Connected successfully to server");
-    //     return {
-    //       status: true,
-    //       client: this._client
-    //     };
-    //   }).catch(error => {
-    //       return {status: false};
-    //   });
   }
 
   async closeConnection() {
