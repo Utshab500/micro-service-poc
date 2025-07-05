@@ -2,15 +2,7 @@ import pkg from "mongodb";
 const { MongoClient } = pkg;
 
 import Connection from "./connection.js";
-
-/**
- * Definig user model
- */
-export class User {
-    name = "";
-    email = "";
-    asignedTaskIds = [];
-};
+import User from "../models/User.js";
 
 /**
  * Accepts an object of type User model and inserts into DB

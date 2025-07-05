@@ -44,7 +44,7 @@ router.get('/health', (req, res) => {
  *               email:
  *                 type: string
  *                 example: john@example.com
- *               asignedTaskIds:
+ *               assignedTaskIds:
  *                 type: array
  *                 items:
  *                   type: string

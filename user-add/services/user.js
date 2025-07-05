@@ -1,9 +1,8 @@
-import { User, insert } from "../db/userDAO.js";
+import User from "../models/User.js";
+import { insert } from "../db/userDAO.js";
 
 export async function addUser(data) {
     const user = new User();
-    user.name = data['name'];
-    user.email = data['email'];
-    user.asignedTaskIds = data['asignedTaskIds'];
+    user.setUser(data, user);
     return insert(user).then(resp => resp).catch(error => false);
 }
