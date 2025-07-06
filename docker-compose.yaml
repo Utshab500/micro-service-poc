@@ -1,0 +1,74 @@
+version: '3.8'
+
+networks:
+  ms-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - ms-network
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root123
+      ME_CONFIG_MONGODB_SERVER: mongo
+    ports:
+      - "8081:8081"
+    depends_on:
+      mongo:
+        condition: service_started
+    networks:
+      - ms-network
+  
+  user-add-service:
+    build:
+      context: ./user-add
+      dockerfile: Dockerfile
+      args:
+        - ENV=local
+    environment:
+      - SERVICE_PORT=3001
+    container_name: user-add-service
+    restart: always
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+    networks:
+      - ms-network
+
+  user-list-service:
+    build:
+      context: ./user-list
+      dockerfile: Dockerfile
+      args:
+        - ENV=local
+    environment:
+      - SERVICE_PORT=3002
+    container_name: user-list-service
+    restart: always
+    ports:
+      - "3002:3000"
+    depends_on:
+      - mongo
+    networks:
+      - ms-network
