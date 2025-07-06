@@ -46,7 +46,7 @@ services:
       args:
         - ENV=local
     environment:
-      - TARGET_PORT=3001
+      - SERVICE_PORT=3001
     container_name: user-add-service
     restart: always
     ports:
@@ -63,7 +63,7 @@ services:
       args:
         - ENV=local
     environment:
-      - TARGET_PORT=3002
+      - SERVICE_PORT=3002
     container_name: user-list-service
     restart: always
     ports:

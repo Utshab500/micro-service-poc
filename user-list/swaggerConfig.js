@@ -1,6 +1,6 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 
-const port = process.env.TARGET_PORT || 3000;
+const port = process.env.SERVICE_PORT || 3000;
 const options = {
   definition: {
     openapi: "3.0.0",
