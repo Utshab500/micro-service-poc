@@ -8,4 +8,4 @@ Here I implement a micro-service architecture to practice all the relevant conce
 In this phase, I only implement a simple CRUD operation breaking each operation in micro-service.
 
 ## Architecture
-![alt text](image.png)
+![alt text](image-1.png)
