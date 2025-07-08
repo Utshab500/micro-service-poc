@@ -49,7 +49,7 @@ Access each service using following links.
 
 ## How to destroy the stack?
 
-### Linux or MacOS
+### Linux or MacOS or Windows Subsystem Linux
 Execute below script and follow the instructions and put `y` when asked.
 ```bash
 ./hard-cleanup.sh
