@@ -61,5 +61,5 @@ Execute below commands and follow the instructions and put `y` when asked.
 docker compose down
 docker image prune -a
 docker network prune
-docker volume prune
+docker volume prune -a
 ```
