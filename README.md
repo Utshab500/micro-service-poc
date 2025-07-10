@@ -18,34 +18,32 @@ Required softwares needed before running the stack
 2. docker
 3. docker-compose
 
-### Step 1
-Clone the repo
+### Steps
+1. Clone the repository.
+2. Change directory and get inside the repository.
+    ```bash
+    cd micro-service-poc
+    ```
+3. Make sure <b>docker-desktop</b> or <b>docker daemon</b> is running. Execute below command.
+    ```bash
+    docker compose up -d
+    ```
+4. Access each service using following <i>Service URLs</i>.
 
-### Step 2
-`cd` inside the repository
-
-### Step 3
-Make sure <b>docker-desktop</b> is running. Execute below command
-```bash
-docker compose up -d
-```
-
-### Step 4
-Access each service using following links.
-
-#### Mongo Express credentials
+## Mongo Express credentials
 | Credentials | Value |
 | - | - |
 | Username | admin |
 | Password | pass |
 
-#### Seevice URLs
+## Service URLs
 <b>Swagger</b> is available for each service, also <b>Postman clinet</b> can be used 
 | Service | URL | Swagger URL |
 | - | - | - |
 | Mongo Express | http://localhost:8081 | |
 | User Add | http://localhost:3001 | http://localhost:3001/api-docs |
 | User List | http://localhost:3002 | http://localhost:3002/api-docs |
+| User Delete | http://localhost:3003 | http://localhost:3003/api-docs |
 
 ## How to destroy the stack?
 

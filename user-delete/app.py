@@ -8,6 +8,8 @@ from db.Connection import Connection
 from services.user import delete_user_service
 
 load_dotenv()
+PORT = os.getenv('SERVICE_PORT', 5000)
+
 db_connection = Connection(
     DB_HOST=os.getenv('DB_HOST'),
     DB_NAME=os.getenv('DB_NAME')
@@ -20,7 +22,18 @@ app.config['SWAGGER'] = {
     'uiversion': 3,
     'openapi': '3.0.2',
     'swagger_ui': True,
-    'specs_route': '/api-docs/'
+    'specs_route': '/api-docs',
+    'info': {
+        'title': 'User Delete Service API',
+        'description': 'API documentation for User Delete Service',
+        'version': '1.0.0'
+    },
+    'servers': [
+        {
+            'url': f'http://localhost:{PORT}'
+        }
+    ]
+    
 }
 swagger = Swagger(app)
 

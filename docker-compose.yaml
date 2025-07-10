@@ -72,3 +72,20 @@ services:
       - mongo
     networks:
       - ms-network
+
+  user-delete-service:
+    build:
+      context: ./user-delete
+      dockerfile: Dockerfile
+      args:
+        - ENV=local
+    environment:
+      - SERVICE_PORT=3003
+    container_name: user-delete-service
+    restart: always
+    ports:
+      - "3003:5000"
+    depends_on:
+      - mongo
+    networks:
+      - ms-network
