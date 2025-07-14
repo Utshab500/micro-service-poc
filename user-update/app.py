@@ -95,10 +95,6 @@ def update_user():
                 status:
                   type: boolean
                   example: true
-      400:
-        description: Bad Request - Missing user data or _id
-      500:
-        description: Internal Server Error - Failed to update user
     """
     user_data = request.get_json()
     if not user_data or not user_data.get('_id'):
