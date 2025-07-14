@@ -24,8 +24,8 @@ app.config['SWAGGER'] = {
     'swagger_ui': True,
     'specs_route': '/api-docs',
     'info': {
-        'title': 'User Delete Service API',
-        'description': 'API documentation for User Delete Service',
+        'title': 'User Update Service API',
+        'description': 'API documentation for User Update Service',
         'version': '1.0.0'
     },
     'servers': [
@@ -60,8 +60,6 @@ def update_user():
     """
     Update a user
     ---
-    tags:
-      - User
     requestBody:
       description: User object that needs to be updated. The `_id` field is required to find the user.
       required: true
