@@ -43,6 +43,7 @@ Required softwares needed before running the stack
 | Mongo Express | http://localhost:8081 | |
 | User Add | http://localhost:3001 | http://localhost:3001/api-docs |
 | User List | http://localhost:3002 | http://localhost:3002/api-docs |
+| User Update | http://localhost:3004 | http://localhost:3004/api-docs |
 | User Delete | http://localhost:3003 | http://localhost:3003/api-docs |
 
 ## How to destroy the stack?
